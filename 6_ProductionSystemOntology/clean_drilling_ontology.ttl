@@ -1,0 +1,289 @@
+@prefix : <http://ontologies.ift.at/clean_drilling_ontology/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://ontologies.ift.at/clean_drilling_ontology/0.1> a owl:Ontology ;
+	owl:versionIRI <http://ontologies.ift.at/clean_drilling_ontology/0.1> ;
+	owl:versionInfo "0.1"^^xsd:decimal ;
+	rdfs:label "Clean Drilling Project Ontology" .
+# 
+# 
+# #################################################################
+# #
+# #    Object Properties
+# #
+# #################################################################
+# 
+# 
+# http://ontologies.ift.at/clean_drilling_ontology/0.1/associatedWithLayer
+
+:associatedWithLayer a owl:ObjectProperty ;
+	rdfs:domain <http://www.w3.org/ns/sosa/Observation> ;
+	rdfs:range :Plate .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Data properties
+# #
+# #################################################################
+# 
+# 
+# http://ontologies.ift.at/clean_drilling_ontology/0.1/datatable
+
+:datatable a owl:DatatypeProperty .
+# 
+# http://ontologies.ift.at/clean_drilling_ontology/0.1/drillDiameter
+
+:drillDiameter a owl:DatatypeProperty .
+# 
+# http://ontologies.ift.at/clean_drilling_ontology/0.1/holenumber
+
+:holenumber a owl:DatatypeProperty .
+# 
+# http://ontologies.ift.at/clean_drilling_ontology/0.1/positionColumn
+
+:positionColumn a owl:DatatypeProperty ;
+	rdfs:domain :Borehole .
+# 
+# http://ontologies.ift.at/clean_drilling_ontology/0.1/positionRow
+
+:positionRow a owl:DatatypeProperty .
+# 
+# http://ontologies.ift.at/clean_drilling_ontology/0.1/rawMaterial
+
+:rawMaterial a owl:DatatypeProperty .
+# 
+# http://ontologies.ift.at/clean_drilling_ontology/0.1/samplingrate
+
+:samplingrate a owl:DatatypeProperty .
+# 
+# http://ontologies.ift.at/clean_drilling_ontology/0.1/thickness
+
+:thickness a owl:DatatypeProperty .
+# 
+# http://ontologies.ift.at/clean_drilling_ontology/0.1/vendor
+
+:vendor a owl:DatatypeProperty .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Classes
+# #
+# #################################################################
+# 
+# 
+# http://ontologies.ift.at/clean_drilling_ontology/0.1/AccelerationSensor
+
+:AccelerationSensor a owl:Class ;
+	rdfs:subClassOf <http://ontologies.ift.at/production_systems.ttl/0.5/TimeSeriesSensor> .
+# 
+# http://ontologies.ift.at/clean_drilling_ontology/0.1/Borehole
+
+:Borehole a owl:Class ;
+	rdfs:subClassOf <http://ontologies.ift.at/production_systems.ttl/0.5/GeometricFeature> .
+# 
+# http://ontologies.ift.at/clean_drilling_ontology/0.1/Breakout
+
+:Breakout a owl:Class ;
+	rdfs:subClassOf <http://ontologies.ift.at/production_systems.ttl/0.5/QualityProperties> .
+# 
+# http://ontologies.ift.at/clean_drilling_ontology/0.1/BurrHeight
+
+:BurrHeight a owl:Class ;
+	rdfs:subClassOf <http://ontologies.ift.at/production_systems.ttl/0.5/QualityProperties> .
+# 
+# http://ontologies.ift.at/clean_drilling_ontology/0.1/BurrHeightIn
+
+:BurrHeightIn a owl:Class ;
+	rdfs:subClassOf :BurrHeight .
+# 
+# http://ontologies.ift.at/clean_drilling_ontology/0.1/BurrHeightOut
+
+:BurrHeightOut a owl:Class ;
+	rdfs:subClassOf :BurrHeight .
+# 
+# http://ontologies.ift.at/clean_drilling_ontology/0.1/ChipResidues
+
+:ChipResidues a owl:Class ;
+	rdfs:subClassOf <http://ontologies.ift.at/production_systems.ttl/0.5/QualityProperties> .
+# 
+# http://ontologies.ift.at/clean_drilling_ontology/0.1/CoatedDrill
+
+:CoatedDrill a owl:Class ;
+	rdfs:subClassOf <http://ontologies.ift.at/production_systems.ttl/0.5/Drill> .
+# 
+# http://ontologies.ift.at/clean_drilling_ontology/0.1/CuttingDepth
+
+:CuttingDepth a owl:Class ;
+	rdfs:subClassOf <http://ontologies.ift.at/production_systems.ttl/0.5/ProcessProperties> .
+# 
+# http://ontologies.ift.at/clean_drilling_ontology/0.1/CuttingSpeed
+
+:CuttingSpeed a owl:Class ;
+	rdfs:subClassOf <http://ontologies.ift.at/production_systems.ttl/0.5/ProcessProperties> .
+# 
+# http://ontologies.ift.at/clean_drilling_ontology/0.1/Delamination
+
+:Delamination a owl:Class ;
+	rdfs:subClassOf <http://ontologies.ift.at/production_systems.ttl/0.5/QualityProperties> .
+# 
+# http://ontologies.ift.at/clean_drilling_ontology/0.1/Diameter
+
+:Diameter a owl:Class ;
+	rdfs:subClassOf <http://ontologies.ift.at/production_systems.ttl/0.5/QualityProperties> .
+# 
+# http://ontologies.ift.at/clean_drilling_ontology/0.1/Drilling
+
+:Drilling a owl:Class ;
+	rdfs:subClassOf <http://ontologies.ift.at/production_systems.ttl/0.5/Cutting> .
+# 
+# http://ontologies.ift.at/clean_drilling_ontology/0.1/Experiment
+
+:Experiment a owl:Class ;
+	rdfs:subClassOf <http://ontologies.ift.at/production_systems.ttl/0.5/Project> .
+# 
+# http://ontologies.ift.at/clean_drilling_ontology/0.1/FeedRate
+
+:FeedRate a owl:Class ;
+	rdfs:subClassOf <http://ontologies.ift.at/production_systems.ttl/0.5/ProcessProperties> .
+# 
+# http://ontologies.ift.at/clean_drilling_ontology/0.1/FeedRatePerTooth
+
+:FeedRatePerTooth a owl:Class ;
+	rdfs:subClassOf <http://ontologies.ift.at/production_systems.ttl/0.5/ProcessProperties> .
+# 
+# http://ontologies.ift.at/clean_drilling_ontology/0.1/FlowSensor
+
+:FlowSensor a owl:Class ;
+	rdfs:subClassOf <http://ontologies.ift.at/production_systems.ttl/0.5/TimeSeriesSensor> .
+# 
+# http://ontologies.ift.at/clean_drilling_ontology/0.1/ForceSensor
+
+:ForceSensor a owl:Class ;
+	rdfs:subClassOf <http://ontologies.ift.at/production_systems.ttl/0.5/TimeSeriesSensor> .
+# 
+# http://ontologies.ift.at/clean_drilling_ontology/0.1/Microphone
+
+:Microphone a owl:Class ;
+	rdfs:subClassOf <http://ontologies.ift.at/production_systems.ttl/0.5/TimeSeriesSensor> .
+# 
+# http://ontologies.ift.at/clean_drilling_ontology/0.1/PeckingAmplitude
+
+:PeckingAmplitude a owl:Class ;
+	rdfs:subClassOf <http://ontologies.ift.at/production_systems.ttl/0.5/ProcessProperties> .
+# 
+# http://ontologies.ift.at/clean_drilling_ontology/0.1/PeckingFrequency
+
+:PeckingFrequency a owl:Class ;
+	rdfs:subClassOf <http://ontologies.ift.at/production_systems.ttl/0.5/ProcessProperties> .
+# 
+# http://ontologies.ift.at/clean_drilling_ontology/0.1/Plate
+
+:Plate a owl:Class ;
+	rdfs:subClassOf <http://ontologies.ift.at/production_systems.ttl/0.5/Workpiece> .
+# 
+# http://ontologies.ift.at/clean_drilling_ontology/0.1/PositionSensor
+
+:PositionSensor a owl:Class ;
+	rdfs:subClassOf <http://ontologies.ift.at/production_systems.ttl/0.5/TimeSeriesSensor> .
+# 
+# http://ontologies.ift.at/clean_drilling_ontology/0.1/PressureSensor
+
+:PressureSensor a owl:Class ;
+	rdfs:subClassOf <http://ontologies.ift.at/production_systems.ttl/0.5/TimeSeriesSensor> .
+# 
+# http://ontologies.ift.at/clean_drilling_ontology/0.1/RotationSpeed
+
+:RotationSpeed a owl:Class ;
+	rdfs:subClassOf <http://ontologies.ift.at/production_systems.ttl/0.5/ProcessProperties> .
+# 
+# http://ontologies.ift.at/clean_drilling_ontology/0.1/Roundness
+
+:Roundness a owl:Class ;
+	rdfs:subClassOf <http://ontologies.ift.at/production_systems.ttl/0.5/QualityProperties> .
+# 
+# http://ontologies.ift.at/clean_drilling_ontology/0.1/SurfaceRoughness
+
+:SurfaceRoughness a owl:Class ;
+	rdfs:subClassOf <http://ontologies.ift.at/production_systems.ttl/0.5/QualityProperties> .
+# 
+# http://ontologies.ift.at/clean_drilling_ontology/0.1/TemperatureSensor
+
+:TemperatureSensor a owl:Class ;
+	rdfs:subClassOf <http://ontologies.ift.at/production_systems.ttl/0.5/TimeSeriesSensor> .
+# 
+# http://ontologies.ift.at/clean_drilling_ontology/0.1/ToolHolder
+
+:ToolHolder a owl:Class ;
+	rdfs:subClassOf <http://www.w3.org/ns/ssn/System> .
+# 
+# http://ontologies.ift.at/clean_drilling_ontology/0.1/VibrationAssitedDrilling
+
+:VibrationAssitedDrilling a owl:Class ;
+	rdfs:subClassOf :Drilling .
+# 
+# http://ontologies.ift.at/production_systems.ttl/0.5/Cutting
+
+<http://ontologies.ift.at/production_systems.ttl/0.5/Cutting> a owl:Class .
+# 
+# http://ontologies.ift.at/production_systems.ttl/0.5/Drill
+
+<http://ontologies.ift.at/production_systems.ttl/0.5/Drill> a owl:Class .
+# 
+# http://ontologies.ift.at/production_systems.ttl/0.5/GeometricFeature
+
+<http://ontologies.ift.at/production_systems.ttl/0.5/GeometricFeature> a owl:Class .
+# 
+# http://ontologies.ift.at/production_systems.ttl/0.5/Machine
+
+<http://ontologies.ift.at/production_systems.ttl/0.5/Machine> a owl:Class .
+# 
+# http://ontologies.ift.at/production_systems.ttl/0.5/ProcessProperties
+
+<http://ontologies.ift.at/production_systems.ttl/0.5/ProcessProperties> a owl:Class .
+# 
+# http://ontologies.ift.at/production_systems.ttl/0.5/Project
+
+<http://ontologies.ift.at/production_systems.ttl/0.5/Project> a owl:Class .
+# 
+# http://ontologies.ift.at/production_systems.ttl/0.5/QualityProperties
+
+<http://ontologies.ift.at/production_systems.ttl/0.5/QualityProperties> a owl:Class .
+# 
+# http://ontologies.ift.at/production_systems.ttl/0.5/TimeSeriesSensor
+
+<http://ontologies.ift.at/production_systems.ttl/0.5/TimeSeriesSensor> a owl:Class .
+# 
+# http://ontologies.ift.at/production_systems.ttl/0.5/Workpiece
+
+<http://ontologies.ift.at/production_systems.ttl/0.5/Workpiece> a owl:Class .
+# 
+# http://www.w3.org/ns/sosa/Observation
+
+<http://www.w3.org/ns/sosa/Observation> a owl:Class .
+# 
+# http://www.w3.org/ns/ssn/System
+
+<http://www.w3.org/ns/ssn/System> a owl:Class .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Individuals
+# #
+# #################################################################
+# 
+# 
+# http://ontologies.ift.at/clean_drilling_ontology/0.1/IFT_Hueller_Hille
+
+:IFT_Hueller_Hille a owl:NamedIndividual , <http://ontologies.ift.at/production_systems.ttl/0.5/Machine> .
+# 
+# Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

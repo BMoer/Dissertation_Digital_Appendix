@@ -1,0 +1,318 @@
+@prefix : <http://ontologies.ift.at/production_systems.ttl/0.5/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://ontologies.ift.at/production_systems.ttl/0.5> .
+
+<http://ontologies.ift.at/production_systems.ttl/0.5> rdf:type owl:Ontology ;
+                                                       owl:versionIRI <http://ontologies.ift.at/production_systems.ttl/0.5> ;
+                                                       owl:imports <http://ontologies.ift.at/clean_drilling_ontology.ttl/0.1> ;
+                                                       dc:description "The Production Systems Ontology defines a vocabulary for describing industrial production processes and data that is generated throughout their observation."@en ;
+                                                       owl:versionInfo 0.5 ;
+                                                       rdfs:label "Production Systems Ontology"@en ;
+                                                       dc:title "Production Systems Ontology"@en ;
+                                                       rdfs:comment "The IFT Production Systems Ontology defines a vocabulary for describing industrial production processes."@en ;
+                                                       dc:creator "Benjamin Moerzinger" ;
+                                                       dc:date "2019-01-15T00:00:00"^^xsd:dateTime .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://ontologies.ift.at/production_systems.ttl/0.5/consistsOf
+:consistsOf rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            rdfs:domain :Workpiece ;
+            rdfs:range :Workpiece .
+
+
+###  http://ontologies.ift.at/production_systems.ttl/0.5/createsFeature
+:createsFeature rdf:type owl:ObjectProperty ;
+                rdfs:domain :ManufacturingProcess ;
+                rdfs:range :GeometricFeature .
+
+
+###  http://ontologies.ift.at/production_systems.ttl/0.5/defines
+:defines rdf:type owl:ObjectProperty ;
+         rdfs:domain :Project ;
+         rdfs:range :MachiningRig ,
+                    :Workpiece .
+
+
+###  http://ontologies.ift.at/production_systems.ttl/0.5/executesProcess
+:executesProcess rdf:type owl:ObjectProperty ;
+                 rdfs:domain :MachiningRig ;
+                 rdfs:range :ManufacturingProcess .
+
+
+###  http://ontologies.ift.at/production_systems.ttl/0.5/hasSubprocess
+:hasSubprocess rdf:type owl:ObjectProperty ;
+               rdfs:domain :ManufacturingProcess ;
+               rdfs:range :ManufacturingProcess .
+
+
+###  http://ontologies.ift.at/production_systems.ttl/0.5/isFeatureOf
+:isFeatureOf rdf:type owl:ObjectProperty ;
+             rdfs:domain :GeometricFeature ;
+             rdfs:range :Workpiece .
+
+
+###  http://ontologies.ift.at/production_systems.ttl/0.5/operates
+:operates rdf:type owl:ObjectProperty ;
+          rdfs:domain :Operator ;
+          rdfs:range :MachiningRig .
+
+
+###  http://ontologies.ift.at/production_systems.ttl/0.5/usesTool
+:usesTool rdf:type owl:ObjectProperty ;
+          rdfs:domain :ManufacturingProcess ;
+          rdfs:range :Tool .
+
+
+###  http://www.w3.org/2006/time#hasBeginning
+<http://www.w3.org/2006/time#hasBeginning> rdf:type owl:ObjectProperty .
+
+
+###  http://www.w3.org/2006/time#hasEnd
+<http://www.w3.org/2006/time#hasEnd> rdf:type owl:ObjectProperty .
+
+
+###  http://www.w3.org/ns/sosa/hasSimpleResult
+<http://www.w3.org/ns/sosa/hasSimpleResult> rdf:type owl:ObjectProperty .
+
+
+###  http://www.w3.org/ns/sosa/hosts
+<http://www.w3.org/ns/sosa/hosts> rdf:type owl:ObjectProperty .
+
+
+###  http://www.w3.org/ns/sosa/madeObservation
+<http://www.w3.org/ns/sosa/madeObservation> rdf:type owl:ObjectProperty ;
+                                            rdfs:domain <http://www.w3.org/ns/sosa/Sensor> ;
+                                            rdfs:range <http://www.w3.org/ns/sosa/Observation> .
+
+
+###  http://www.w3.org/ns/sosa/observedProperty
+<http://www.w3.org/ns/sosa/observedProperty> rdf:type owl:ObjectProperty ;
+                                             rdfs:domain <http://www.w3.org/ns/sosa/Observation> ;
+                                             rdfs:range <http://www.w3.org/ns/sosa/ObservableProperty> .
+
+
+###  http://www.w3.org/ns/sosa/observes
+<http://www.w3.org/ns/sosa/observes> rdf:type owl:ObjectProperty ;
+                                     rdfs:domain <http://www.w3.org/ns/sosa/Sensor> ;
+                                     rdfs:range <http://www.w3.org/ns/sosa/ObservableProperty> .
+
+
+###  http://www.w3.org/ns/ssn/hasProperty
+<http://www.w3.org/ns/ssn/hasProperty> rdf:type owl:ObjectProperty ;
+                                       owl:inverseOf <http://www.w3.org/ns/ssn/isPropertyOf> .
+
+
+###  http://www.w3.org/ns/ssn/hasSubsystem
+<http://www.w3.org/ns/ssn/hasSubsystem> rdf:type owl:ObjectProperty ;
+                                        rdfs:domain <http://www.w3.org/ns/ssn/System> ;
+                                        rdfs:range <http://www.w3.org/ns/ssn/System> .
+
+
+###  http://www.w3.org/ns/ssn/isPropertyOf
+<http://www.w3.org/ns/ssn/isPropertyOf> rdf:type owl:ObjectProperty ;
+                                        rdfs:domain <http://www.w3.org/ns/sosa/ObservableProperty> ;
+                                        rdfs:range <http://www.w3.org/ns/sosa/FeatureOfInterest> .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://ontologies.ift.at/production_systems.ttl/0.5/nominalValue
+:nominalValue rdf:type owl:DatatypeProperty ;
+              rdfs:domain <http://www.w3.org/ns/sosa/ObservableProperty> .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://ontologies.ift.at/production_systems.ttl/0.5/ChangeProperties
+:ChangeProperties rdf:type owl:Class ;
+                  rdfs:subClassOf :ManufacturingProcess ;
+                  rdfs:isDefinedBy "DIN 8550" ;
+                  rdfs:label "Adjust Properties"@en .
+
+
+###  http://ontologies.ift.at/production_systems.ttl/0.5/Coating
+:Coating rdf:type owl:Class ;
+         rdfs:subClassOf :ManufacturingProcess ;
+         rdfs:isDefinedBy "DIN 8550" ;
+         rdfs:label "Coating"@en .
+
+
+###  http://ontologies.ift.at/production_systems.ttl/0.5/Cutting
+:Cutting rdf:type owl:Class ;
+         rdfs:subClassOf :ManufacturingProcess ;
+         rdfs:isDefinedBy "DIN 8550" ;
+         rdfs:label "Cutting"@en ,
+                    "Trennen"@de .
+
+
+###  http://ontologies.ift.at/production_systems.ttl/0.5/Drill
+:Drill rdf:type owl:Class ;
+       rdfs:subClassOf :Tool ;
+       rdfs:label "Drill"@en .
+
+
+###  http://ontologies.ift.at/production_systems.ttl/0.5/DrillingMachine
+:DrillingMachine rdf:type owl:Class ;
+                 rdfs:subClassOf :Machine ;
+                 rdfs:label "Drilling Machine"@en .
+
+
+###  http://ontologies.ift.at/production_systems.ttl/0.5/Fixture
+:Fixture rdf:type owl:Class ;
+         rdfs:subClassOf <http://www.w3.org/ns/ssn/System> ;
+         rdfs:label "Fixture"@en .
+
+
+###  http://ontologies.ift.at/production_systems.ttl/0.5/Forming
+:Forming rdf:type owl:Class ;
+         rdfs:subClassOf :ManufacturingProcess ;
+         rdfs:isDefinedBy "DIN 8550" ;
+         rdfs:label "Forming"@en ,
+                    "Umformen"@de .
+
+
+###  http://ontologies.ift.at/production_systems.ttl/0.5/GeometricFeature
+:GeometricFeature rdf:type owl:Class ;
+                  rdfs:subClassOf <http://www.w3.org/ns/sosa/FeatureOfInterest> ;
+                  rdfs:label "Geometric Feature"@en .
+
+
+###  http://ontologies.ift.at/production_systems.ttl/0.5/Joining
+:Joining rdf:type owl:Class ;
+         rdfs:subClassOf :ManufacturingProcess ;
+         rdfs:isDefinedBy "DIN 8550" ;
+         rdfs:label "Joining"@en .
+
+
+###  http://ontologies.ift.at/production_systems.ttl/0.5/LatheTool
+:LatheTool rdf:type owl:Class ;
+           rdfs:subClassOf :Tool ;
+           rdfs:label "Lathe Tool"@en .
+
+
+###  http://ontologies.ift.at/production_systems.ttl/0.5/Machine
+:Machine rdf:type owl:Class ;
+         rdfs:subClassOf <http://www.w3.org/ns/ssn/System> .
+
+
+###  http://ontologies.ift.at/production_systems.ttl/0.5/MachiningRig
+:MachiningRig rdf:type owl:Class ;
+              rdfs:subClassOf <http://www.w3.org/ns/sosa/Platform> .
+
+
+###  http://ontologies.ift.at/production_systems.ttl/0.5/ManufacturingProcess
+:ManufacturingProcess rdf:type owl:Class ;
+                      rdfs:subClassOf <http://www.w3.org/ns/sosa/FeatureOfInterest> ;
+                      rdfs:isDefinedBy "DIN 8550"@de ;
+                      rdfs:label "Manufacturing Process"@en .
+
+
+###  http://ontologies.ift.at/production_systems.ttl/0.5/MillingCutter
+:MillingCutter rdf:type owl:Class ;
+               rdfs:subClassOf :Tool ;
+               rdfs:label "Milling Cutter"@en .
+
+
+###  http://ontologies.ift.at/production_systems.ttl/0.5/MillingMachine
+:MillingMachine rdf:type owl:Class ;
+                rdfs:subClassOf :Machine ;
+                rdfs:label "Milling Machine"@en .
+
+
+###  http://ontologies.ift.at/production_systems.ttl/0.5/Operator
+:Operator rdf:type owl:Class .
+
+
+###  http://ontologies.ift.at/production_systems.ttl/0.5/PrimaryForming
+:PrimaryForming rdf:type owl:Class ;
+                rdfs:subClassOf :ManufacturingProcess ;
+                rdfs:isDefinedBy "DIN 8550" ;
+                rdfs:label "Primary Forming"@en ,
+                           "Urformen"@de .
+
+
+###  http://ontologies.ift.at/production_systems.ttl/0.5/ProcessProperties
+:ProcessProperties rdf:type owl:Class ;
+                   rdfs:subClassOf <http://www.w3.org/ns/sosa/ObservableProperty> .
+
+
+###  http://ontologies.ift.at/production_systems.ttl/0.5/Project
+:Project rdf:type owl:Class ;
+         rdfs:label "Project"@en .
+
+
+###  http://ontologies.ift.at/production_systems.ttl/0.5/QualityProperties
+:QualityProperties rdf:type owl:Class ;
+                   rdfs:subClassOf <http://www.w3.org/ns/sosa/ObservableProperty> .
+
+
+###  http://ontologies.ift.at/production_systems.ttl/0.5/QualitySensor
+:QualitySensor rdf:type owl:Class ;
+               rdfs:subClassOf <http://www.w3.org/ns/sosa/Sensor> .
+
+
+###  http://ontologies.ift.at/production_systems.ttl/0.5/TimeSeriesSensor
+:TimeSeriesSensor rdf:type owl:Class ;
+                  rdfs:subClassOf <http://www.w3.org/ns/sosa/Sensor> ;
+                  rdfs:label "Time Series Sensor"@en .
+
+
+###  http://ontologies.ift.at/production_systems.ttl/0.5/Tool
+:Tool rdf:type owl:Class ;
+      rdfs:subClassOf <http://www.w3.org/ns/ssn/System> ;
+      rdfs:label "Tool"@en .
+
+
+###  http://ontologies.ift.at/production_systems.ttl/0.5/TurningMachine
+:TurningMachine rdf:type owl:Class ;
+                rdfs:subClassOf :Machine ;
+                rdfs:label "Turning Machine"@en .
+
+
+###  http://ontologies.ift.at/production_systems.ttl/0.5/Workpiece
+:Workpiece rdf:type owl:Class ;
+           rdfs:subClassOf <http://www.w3.org/ns/sosa/FeatureOfInterest> .
+
+
+###  http://www.w3.org/ns/sosa/FeatureOfInterest
+<http://www.w3.org/ns/sosa/FeatureOfInterest> rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/sosa/ObservableProperty
+<http://www.w3.org/ns/sosa/ObservableProperty> rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/sosa/Observation
+<http://www.w3.org/ns/sosa/Observation> rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/sosa/Platform
+<http://www.w3.org/ns/sosa/Platform> rdf:type owl:Class ;
+                                     rdfs:subClassOf <http://www.w3.org/ns/ssn/System> .
+
+
+###  http://www.w3.org/ns/sosa/Sensor
+<http://www.w3.org/ns/sosa/Sensor> rdf:type owl:Class ;
+                                   rdfs:subClassOf <http://www.w3.org/ns/ssn/System> .
+
+
+###  http://www.w3.org/ns/ssn/System
+<http://www.w3.org/ns/ssn/System> rdf:type owl:Class ;
+                                  rdfs:subClassOf <http://www.w3.org/ns/sosa/FeatureOfInterest> .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi
