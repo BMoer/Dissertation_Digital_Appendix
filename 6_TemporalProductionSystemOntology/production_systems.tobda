@@ -1,0 +1,38 @@
+[PrefixDeclaration]
+pst:		http://ontologies.ift.at/production_systems.ttl/temporal/0.5/
+ps:         http://ontologies.ift.at/production_systems.ttl/0.5/
+owl:		http://www.w3.org/2002/07/owl#
+rdf:		http://www.w3.org/1999/02/22-rdf-syntax-ns#
+xml:		http://www.w3.org/XML/1998/namespace
+xsd:		http://www.w3.org/2001/XMLSchema#
+obda:		https://w3id.org/obda/vocabulary#
+rdfs:		http://www.w3.org/2000/01/rdf-schema#
+
+[MappingDeclaration] @collection [[
+mappingId	urn:Map-drilling
+target		ps:Process/{b_id} a pst:Drilling.
+interval    {process_start_inc} {process_start}^^xsd:dateTimeStamp, {process_stop}^^xsd:dateTimeStamp {process_stop_inc}
+source		SELECT CAST('ID01' AS VARCHAR) AS "b_id", CAST('TRUE' AS Boolean) AS "process_start_inc", "boreholes"."process_start", "boreholes"."process_stop",
+            CAST('TRUE' AS Boolean) AS "process_stop_inc"
+            FROM "boeing_db_structure"."boreholes"
+            WHERE "boreholes"."process_start" IS NOT NULL AND "boreholes"."process_stop" IS NOT NULL
+
+mappingId	urn:Map-standby
+target		ps:Process/{b_id} a pst:StandBy.
+interval    {standby_start_inc} {standby_start}^^xsd:dateTimeStamp, {standby_stop}^^xsd:dateTimeStamp {standby_stop_inc}
+source		SELECT CAST('ID01' AS VARCHAR) AS "b_id", CAST('TRUE' AS Boolean) AS "standby_start_inc",
+            "boreholes"."process_stop" AS "standby_start",
+            LEAD("boreholes"."process_start",1) OVER(ORDER BY "boreholes"."process_start") AS "standby_stop",
+            CAST('TRUE' AS Boolean) AS "standby_stop_inc"
+            FROM "boeing_db_structure"."boreholes"
+            WHERE "boreholes"."process_start" IS NOT NULL AND "boreholes"."process_stop" IS NOT NULL
+
+mappingId	urn:Map-spindleAmp
+target		ps:Process/{b_id}  pst:hasSpindleAmp {amp}.
+interval    {phase_start_inc} {phase_start}^^xsd:dateTimeStamp, {phase_stop}^^xsd:dateTimeStamp {phase_stop_inc}
+source		SELECT CAST('ID01' AS VARCHAR) AS "b_id", "amp", CAST('TRUE' AS Boolean) AS "phase_start_inc",
+            "phases"."phase_start", "phases"."phase_stop",
+            CAST('TRUE' AS Boolean) AS "phase_stop_inc"
+            FROM "boeing_db_structure"."phases"
+            WHERE "phases"."phase_start" IS NOT NULL AND "phases"."phase_stop" IS NOT NULL
+]]
